@@ -21,8 +21,6 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CardApiService {
-//    @GET
-//    suspend fun getCard(@Url url: String): Card
     @GET
     fun getCard(@Url url: String): Call<Card>
 }

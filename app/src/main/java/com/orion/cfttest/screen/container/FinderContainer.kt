@@ -18,9 +18,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.orion.cfttest.BaseViewModel
 import com.orion.cfttest.R
 import com.orion.cfttest.util.dimensionResourceSp
+import com.orion.cfttest.viewmodel.BaseViewModel
 
 @Composable
 fun FinderContainer(viewModel: BaseViewModel) {

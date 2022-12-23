@@ -11,10 +11,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.orion.cfttest.BaseViewModel
 import com.orion.cfttest.R
 import com.orion.cfttest.retrofit.Card
 import com.orion.cfttest.util.dimensionResourceSp
+import com.orion.cfttest.viewmodel.BaseViewModel
 
 @Composable
 fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {

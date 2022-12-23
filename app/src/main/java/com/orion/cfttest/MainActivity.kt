@@ -14,6 +14,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import com.orion.cfttest.screen.MainScreen
 import com.orion.cfttest.ui.theme.CftTestTheme
+import com.orion.cfttest.viewmodel.BaseViewModel
 
 class MainActivity : ComponentActivity() {
     private val viewModel: BaseViewModel by viewModels()

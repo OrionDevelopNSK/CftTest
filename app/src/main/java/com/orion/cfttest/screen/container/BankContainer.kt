@@ -13,10 +13,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.orion.cfttest.BaseViewModel
 import com.orion.cfttest.R
 import com.orion.cfttest.retrofit.Card
 import com.orion.cfttest.util.dimensionResourceSp
+import com.orion.cfttest.viewmodel.BaseViewModel
 
 @Composable
 fun BankContainer(viewModel: BaseViewModel, card: Card?) {
@@ -34,7 +34,7 @@ fun BankContainer(viewModel: BaseViewModel, card: Card?) {
     ) {
         Text(
             modifier = Modifier.padding(start = 16.dp),
-            text = viewModel.getBankAndCity(card),                      //"Jyske Bank, Hjørring"
+            text = viewModel.getBankAndCity(card),
             fontSize = dimensionResourceSp(id = R.dimen.subtitle),
             textAlign = TextAlign.Center,
             color = MaterialTheme.colors.primary,

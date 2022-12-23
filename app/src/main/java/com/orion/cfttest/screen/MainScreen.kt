@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.orion.cfttest.BaseViewModel
 import com.orion.cfttest.screen.container.*
+import com.orion.cfttest.viewmodel.BaseViewModel
 
 @RequiresApi(Build.VERSION_CODES.R)
 @Composable

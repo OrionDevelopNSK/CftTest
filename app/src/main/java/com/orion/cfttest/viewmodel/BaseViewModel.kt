@@ -1,4 +1,4 @@
-package com.orion.cfttest
+package com.orion.cfttest.viewmodel
 
 import android.app.Activity
 import android.content.Intent
