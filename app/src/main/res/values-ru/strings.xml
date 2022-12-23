@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ЦФТ-тест</string>
+    <string name="entering_digits">Введите первые цифры номера карты (BIN/IIN)</string>
+    <string name="search_history">История поиска</string>
+    <string name="Card">КАРТА</string>
+    <string name="scheme_network">СХЕМА / СЕТЬ</string>
+    <string name="brand">БРЭНД</string>
+    <string name="card_number">НОМЕР КАРТЫ</string>
+    <string name="length">ДЛИНА</string>
+    <string name="type">ТИП</string>
+    <string name="algorithm_luhn">ЛУН</string>
+    <string name="prepaid">ПРЕДОПЛАТА</string>
+    <string name="country">СТРАНА</string>
+    <string name="alfa2">АЛЬФА2</string>
+    <string name="location">МЕСТОПОЛОЖЕНИЕ</string>
+    <string name="currency">ВАЛЮТА</string>
+    <string name="numeric_country_code">КОД СТРАНЫ</string>
+    <string name="bank">БАНК</string>
+
+</resources>

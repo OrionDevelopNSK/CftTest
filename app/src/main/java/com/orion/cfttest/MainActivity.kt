@@ -10,14 +10,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Modifier
-import com.orion.cfttest.screen.Information
+import com.orion.cfttest.screen.MainScreen
 import com.orion.cfttest.ui.theme.CftTestTheme
 
 class MainActivity : ComponentActivity() {
@@ -44,11 +39,12 @@ class MainActivity : ComponentActivity() {
                 setContent {
                     CftTestTheme {
                         Surface(
-                            modifier = Modifier.fillMaxSize(),
-                            color = MaterialTheme.colors.background
+                            color = MaterialTheme.colors.background,
                         ) {
-//                            Greeting(viewModel)
-                            Information(viewModel = viewModel)
+                            createStrictModePolicy()
+
+                            MainScreen(viewModel = viewModel)
+
                         }
                     }
                 }
@@ -59,13 +55,9 @@ class MainActivity : ComponentActivity() {
         }
 }
 
-@Composable
-fun Greeting(viewModel: BaseViewModel) {
-    val card = viewModel.card.observeAsState().value
-    Text(text = card?.numberCard?.length.toString())
+fun createStrictModePolicy() {
     val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
     StrictMode.setThreadPolicy(policy)
-    viewModel.parse()
 }
 
 

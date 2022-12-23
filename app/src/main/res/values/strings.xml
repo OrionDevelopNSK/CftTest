@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">CftTest</string>
+    <string name="app_name">CFT-test</string>
+    <string name="entering_digits">Enter the first digits of a card number (BIN/IIN)</string>
+    <string name="search_history">Search history</string>
+    <string name="Card">CARD</string>
+    <string name="scheme_network">SCHEME / NETWORK</string>
+    <string name="brand">BRAND</string>
+    <string name="card_number">CARD NUMBER</string>
+    <string name="length">LENGTH</string>
+    <string name="type">TYPE</string>
+    <string name="algorithm_luhn">LUHN</string>
+    <string name="prepaid">PREPAID</string>
+    <string name="country">COUNTRY</string>
+    <string name="alfa2">ALFA2</string>
+    <string name="location">LOCATION</string>
+    <string name="currency">CURRENCY</string>
+    <string name="numeric_country_code">COUNTRY CODE</string>
+    <string name="bank">BANK</string>
 </resources>
