@@ -1,5 +1,6 @@
 package com.orion.cfttest.retrofit
 
+import com.orion.cfttest.model.Card
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call

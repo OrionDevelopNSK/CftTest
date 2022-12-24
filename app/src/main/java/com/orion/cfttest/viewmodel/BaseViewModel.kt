@@ -7,7 +7,10 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.orion.cfttest.retrofit.Card
+import androidx.room.Room
+import com.orion.cfttest.data.database.AppDataBase
+import com.orion.cfttest.data.database.DataBaseHelper
+import com.orion.cfttest.model.Card
 import com.orion.cfttest.retrofit.CardApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -65,7 +68,7 @@ class BaseViewModel : ViewModel() {
     }
 
     fun getLuhn(card: Card?): String {
-        return when(card?.number?.luhn){
+        return when (card?.numberCard?.luhn) {
             false -> "no"
             true -> "yes"
             else -> "?"
@@ -73,7 +76,7 @@ class BaseViewModel : ViewModel() {
     }
 
     fun getLength(card: Card?): String {
-        return (card?.number?.length ?: "?").toString()
+        return (card?.numberCard?.length ?: "?").toString()
     }
 
     fun getType(card: Card?): String {
@@ -126,6 +129,12 @@ class BaseViewModel : ViewModel() {
                 println("onFailure")
             }
         })
+    }
+
+    fun save(context: Activity) {
+        val appDataBase = Room.databaseBuilder(context, AppDataBase::class.java, "cards_db").build()
+        val dataBaseHelper = DataBaseHelper(appDataBase)
+        dataBaseHelper.repeat()
     }
 }
 

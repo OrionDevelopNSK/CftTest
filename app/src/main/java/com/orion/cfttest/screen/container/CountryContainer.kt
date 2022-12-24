@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.orion.cfttest.R
-import com.orion.cfttest.retrofit.Card
+import com.orion.cfttest.model.Card
 import com.orion.cfttest.util.dimensionResourceSp
 import com.orion.cfttest.viewmodel.BaseViewModel
 

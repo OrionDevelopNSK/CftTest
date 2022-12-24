@@ -1,4 +1,4 @@
-package com.orion.cfttest.retrofit
+package com.orion.cfttest.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -12,6 +12,6 @@ data class Bank (
     @Json(name = "phone")
     val phone: String?,
     @Json(name = "city")
-    val city: String?,
+    val city: String?
 )
 

@@ -1,5 +1,6 @@
 package com.orion.cfttest.screen.container
 
+import android.app.Activity
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -12,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -25,6 +27,7 @@ import com.orion.cfttest.viewmodel.BaseViewModel
 @Composable
 fun FinderContainer(viewModel: BaseViewModel) {
     val bin = remember { mutableStateOf("") }
+    val context = LocalContext.current as Activity
     Column(
         modifier = Modifier
             .padding(16.dp)
@@ -62,7 +65,10 @@ fun FinderContainer(viewModel: BaseViewModel) {
         Button(
             modifier = Modifier
                 .fillMaxWidth(),
-            onClick = { /*TODO*/ }) {
+            onClick = {
+                viewModel.save(context)
+
+            }) {
             Text(
                 stringResource(R.string.search_history),
                 fontSize = dimensionResourceSp(id = R.dimen.headline)

@@ -1,10 +1,10 @@
-package com.orion.cfttest.retrofit
+package com.orion.cfttest.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Number(
+data class NumberCard(
     @Json(name = "length")
     val length: Int?,
     @Json(name = "luhn")
