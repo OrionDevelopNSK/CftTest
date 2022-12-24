@@ -5,6 +5,8 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -25,7 +27,7 @@ fun MainScreen(viewModel: BaseViewModel) {
                 .fillMaxSize()
                 .padding(8.dp),
             shape = RoundedCornerShape(8.dp),
-            elevation = 5.dp
+            shadowElevation = 5.dp
         ) {
             Column(
                 verticalArrangement = Arrangement.SpaceEvenly

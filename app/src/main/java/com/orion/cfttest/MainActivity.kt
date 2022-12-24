@@ -10,12 +10,14 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import com.orion.cfttest.screen.MainScreen
 import com.orion.cfttest.ui.theme.CftTestTheme
 import com.orion.cfttest.viewmodel.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel: BaseViewModel by viewModels()
     @RequiresApi(Build.VERSION_CODES.R)
@@ -40,7 +42,7 @@ class MainActivity : ComponentActivity() {
                 setContent {
                     CftTestTheme {
                         Surface(
-                            color = MaterialTheme.colors.background,
+                            color = MaterialTheme.colorScheme.background,
                         ) {
                             createStrictModePolicy()
 

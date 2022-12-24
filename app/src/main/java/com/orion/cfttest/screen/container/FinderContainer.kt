@@ -1,19 +1,14 @@
 package com.orion.cfttest.screen.container
 
-import android.app.Activity
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -24,10 +19,10 @@ import com.orion.cfttest.R
 import com.orion.cfttest.util.dimensionResourceSp
 import com.orion.cfttest.viewmodel.BaseViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FinderContainer(viewModel: BaseViewModel) {
     val bin = remember { mutableStateOf("") }
-    val context = LocalContext.current as Activity
     Column(
         modifier = Modifier
             .padding(16.dp)
@@ -45,7 +40,7 @@ fun FinderContainer(viewModel: BaseViewModel) {
             singleLine = true,
             onValueChange = {
                 bin.value = it
-                viewModel.getCard(it)
+                viewModel.createCard(it)
             },
 
             label = {
@@ -53,7 +48,7 @@ fun FinderContainer(viewModel: BaseViewModel) {
                     text = stringResource(R.string.entering_digits),
                     fontSize = 12.sp,
                     textAlign = TextAlign.Center,
-                    color = MaterialTheme.colors.primary,
+                    color = MaterialTheme.colorScheme.primary,
                 )
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -65,8 +60,9 @@ fun FinderContainer(viewModel: BaseViewModel) {
         Button(
             modifier = Modifier
                 .fillMaxWidth(),
+            shape = RoundedCornerShape(15.dp),
             onClick = {
-                viewModel.save(context)
+                viewModel.save()
 
             }) {
             Text(

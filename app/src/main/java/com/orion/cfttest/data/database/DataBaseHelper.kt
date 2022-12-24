@@ -9,8 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import javax.inject.Inject
 
-class DataBaseHelper(dataBase: AppDataBase) {
+class DataBaseHelper @Inject constructor(dataBase: AppDataBase) {
 
     private val roomRepository = RoomRepository(dataBase.roomDao())
 

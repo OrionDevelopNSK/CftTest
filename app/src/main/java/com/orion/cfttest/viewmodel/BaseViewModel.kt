@@ -1,30 +1,36 @@
 package com.orion.cfttest.viewmodel
 
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.room.Room
-import com.orion.cfttest.data.database.AppDataBase
 import com.orion.cfttest.data.database.DataBaseHelper
 import com.orion.cfttest.model.Card
 import com.orion.cfttest.retrofit.CardApi
+import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
 
 private const val GOOGLE_MAP = "http://maps.google.com/maps?q=loc:"
 
-class BaseViewModel : ViewModel() {
+
+@HiltViewModel
+class BaseViewModel @Inject constructor(
+    private val dataBaseHelper: DataBaseHelper
+) : ViewModel(
+
+) {
     private val _card: MutableLiveData<Card> = MutableLiveData()
     val card: LiveData<Card> = _card
 
 
-    fun openMap(context: Activity, card: Card?) {
+    fun openMap(context: Context, card: Card?) {
         val latitude = card?.country?.latitude
         val longitude = card?.country?.longitude
         val intent =
@@ -35,13 +41,13 @@ class BaseViewModel : ViewModel() {
         ContextCompat.startActivity(context, intent, null)
     }
 
-    fun openBrowser(context: Activity, card: Card?) {
+    fun openBrowser(context: Context, card: Card?) {
         val intent =
             Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://" + card?.bank?.url))
         ContextCompat.startActivity(context, intent, null)
     }
 
-    fun callPhone(context: Activity, card: Card?) {
+    fun callPhone(context: Context, card: Card?) {
         val intent =
             Intent(Intent.ACTION_CALL, Uri.parse("tel: ${card?.bank?.phone}"))
         ContextCompat.startActivity(context, intent, null)
@@ -116,7 +122,7 @@ class BaseViewModel : ViewModel() {
 
     }
 
-    fun getCard(url: String) {
+    fun createCard(url: String) {
         CardApi.retrofitService.getCard(url).enqueue(object : Callback<Card> {
             override fun onResponse(call: Call<Card>, response: Response<Card>) {
                 val tmpCard = response.body()
@@ -131,9 +137,7 @@ class BaseViewModel : ViewModel() {
         })
     }
 
-    fun save(context: Activity) {
-        val appDataBase = Room.databaseBuilder(context, AppDataBase::class.java, "cards_db").build()
-        val dataBaseHelper = DataBaseHelper(appDataBase)
+    fun save() {
         dataBaseHelper.repeat()
     }
 }

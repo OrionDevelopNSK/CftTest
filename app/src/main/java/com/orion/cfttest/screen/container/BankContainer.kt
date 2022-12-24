@@ -3,8 +3,8 @@ package com.orion.cfttest.screen.container
 import android.app.Activity
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,7 +27,7 @@ fun BankContainer(viewModel: BaseViewModel, card: Card?) {
         fontWeight = FontWeight.Bold,
         fontSize = dimensionResourceSp(id = R.dimen.headline),
         textAlign = TextAlign.Start,
-        color = MaterialTheme.colors.primary,
+        color = MaterialTheme.colorScheme.primary,
     )
 
     Column(
@@ -37,7 +37,7 @@ fun BankContainer(viewModel: BaseViewModel, card: Card?) {
             text = viewModel.getBankAndCity(card),
             fontSize = dimensionResourceSp(id = R.dimen.subtitle),
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.primary,
+            color = MaterialTheme.colorScheme.primary,
         )
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -59,7 +59,7 @@ fun BankContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getUrl(card),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Start,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colorScheme.secondary,
             )
 
             Spacer(modifier = Modifier.width(16.dp))
@@ -73,7 +73,7 @@ fun BankContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getPhoneNumber(card),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Start,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colorScheme.secondary,
             )
         }
 

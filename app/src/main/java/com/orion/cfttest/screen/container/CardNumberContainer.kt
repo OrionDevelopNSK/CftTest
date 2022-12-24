@@ -1,9 +1,9 @@
 package com.orion.cfttest.screen.container
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,7 +25,7 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
         fontWeight = FontWeight.Bold,
         fontSize = dimensionResourceSp(id = R.dimen.headline),
         textAlign = TextAlign.Center,
-        color = MaterialTheme.colors.primary,
+        color = MaterialTheme.colorScheme.primary,
     )
 
     Row(
@@ -41,13 +41,13 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
                 text = stringResource(R.string.length),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.primary,
+                color = MaterialTheme.colorScheme.primary,
             )
             Text(
                 text = viewModel.getLength(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colorScheme.secondary,
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -56,13 +56,13 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
                 text = stringResource(R.string.type),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.primary,
+                color = MaterialTheme.colorScheme.primary,
             )
             Text(
                 text = viewModel.getType(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colorScheme.secondary,
             )
         }
 
@@ -75,13 +75,13 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
                 text = stringResource(R.string.algorithm_luhn),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.primary,
+                color = MaterialTheme.colorScheme.primary,
             )
             Text(
                 text = viewModel.getLuhn(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colorScheme.secondary,
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -90,13 +90,13 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
                 text = stringResource(R.string.prepaid),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.primary,
+                color = MaterialTheme.colorScheme.primary,
             )
             Text(
                 text = viewModel.getPrepared(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colorScheme.secondary,
             )
         }
     }

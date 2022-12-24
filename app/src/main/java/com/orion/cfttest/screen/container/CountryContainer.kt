@@ -3,9 +3,9 @@ package com.orion.cfttest.screen.container
 import android.app.Activity
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,7 +29,7 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
         fontWeight = FontWeight.Bold,
         fontSize = dimensionResourceSp(id = R.dimen.headline),
         textAlign = TextAlign.Center,
-        color = MaterialTheme.colors.primary,
+        color = MaterialTheme.colorScheme.primary,
     )
 
     Row(
@@ -44,14 +44,14 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
             text = viewModel.getEmoji(card),
             fontSize = 12.sp,
             textAlign = TextAlign.Start,
-            color = MaterialTheme.colors.primary,
+            color = MaterialTheme.colorScheme.primary,
         )
         Spacer(modifier = Modifier.width(4.dp))
         Text(
             text = viewModel.getCity(card),
             fontSize = dimensionResourceSp(id = R.dimen.subtitle),
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.secondary,
+            color = MaterialTheme.colorScheme.secondary,
         )
 
     }
@@ -71,13 +71,13 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
                 text = stringResource(R.string.alfa2),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.primary,
+                color = MaterialTheme.colorScheme.primary,
             )
             Text(
                 text = viewModel.getAlfa2(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colorScheme.secondary,
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -86,7 +86,7 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
                 text = stringResource(R.string.location),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.primary,
+                color = MaterialTheme.colorScheme.primary,
             )
 
             Text(
@@ -96,7 +96,7 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getLocation(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colorScheme.secondary,
             )
         }
 
@@ -109,13 +109,13 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
                 text = stringResource(R.string.currency),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.primary,
+                color = MaterialTheme.colorScheme.primary,
             )
             Text(
                 text = viewModel.getCurrency(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colorScheme.secondary,
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -124,13 +124,13 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
                 text = stringResource(R.string.numeric_country_code),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.primary,
+                color = MaterialTheme.colorScheme.primary,
             )
             Text(
                 text = viewModel.getCountryCode(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colorScheme.secondary,
             )
         }
     }
