@@ -51,7 +51,7 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
             text = viewModel.getCity(card),
             fontSize = dimensionResourceSp(id = R.dimen.subtitle),
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.secondary,
+            color = MaterialTheme.colorScheme.tertiary,
         )
 
     }
@@ -77,7 +77,7 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getAlfa2(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.tertiary,
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -96,7 +96,7 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getLocation(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.tertiary,
             )
         }
 
@@ -115,7 +115,7 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getCurrency(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.tertiary,
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -130,10 +130,10 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getCountryCode(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.tertiary,
             )
         }
     }
 
-    Divider(modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp))
+    Divider(modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp, top = 8.dp))
 }

@@ -3,11 +3,14 @@ package com.orion.cfttest.viewmodel
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.orion.cfttest.data.database.DataBaseHelper
+import com.orion.cfttest.data.entity.CardEntity
+import com.orion.cfttest.data.util.Converter
 import com.orion.cfttest.model.Card
 import com.orion.cfttest.retrofit.CardApi
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,6 +31,9 @@ class BaseViewModel @Inject constructor(
 ) {
     private val _card: MutableLiveData<Card> = MutableLiveData()
     val card: LiveData<Card> = _card
+
+    private val _cardList: MutableLiveData<List<Card>> = MutableLiveData()
+    val cardList: LiveData<List<Card>> = _cardList
 
 
     fun openMap(context: Context, card: Card?) {
@@ -126,19 +132,38 @@ class BaseViewModel @Inject constructor(
         CardApi.retrofitService.getCard(url).enqueue(object : Callback<Card> {
             override fun onResponse(call: Call<Card>, response: Response<Card>) {
                 val tmpCard = response.body()
-                _card.value = tmpCard
-                println("onResponse")
+                if (tmpCard != null) {
+                    tmpCard.bin = url
+                    _card.value = tmpCard
+                    val cardToCardEntity = Converter.cardToCardEntity(tmpCard)
+                    saveCard(cardToCardEntity)
+                }else{
+                    _card.value = null
+                }
+
+                Log.d("ViewModel","onResponse")
             }
 
             override fun onFailure(call: Call<Card>, t: Throwable) {
                 _card.value = null
-                println("onFailure")
+                Log.d("ViewModel","onFailure")
             }
         })
     }
 
-    fun save() {
-        dataBaseHelper.repeat()
+
+    fun saveCard(cardEntity: CardEntity) {
+        dataBaseHelper.saveCards(mutableListOf(cardEntity))
+    }
+
+    fun loadCard() {
+        val loadCardsEntities: List<CardEntity> = dataBaseHelper.loadCards().reversed()
+        if (loadCardsEntities.isEmpty()) return
+        val cards = mutableListOf<Card>()
+        for (cardEntity in loadCardsEntities) {
+            cards.add(Converter.cardEntityToCard(cardEntity))
+        }
+        _cardList.value = cards
     }
 }
 

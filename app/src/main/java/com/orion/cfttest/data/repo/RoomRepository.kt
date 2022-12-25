@@ -9,7 +9,7 @@ class RoomRepository(private val roomDao: RoomDao) {
         roomDao.insertAllCards(cardsEntity)
     }
 
-    fun getAllCards() : MutableList<CardEntity>{
+    fun getAllCards() : MutableList<CardEntity> {
         return roomDao.getCards()
     }
 }

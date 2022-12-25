@@ -59,7 +59,7 @@ fun BankContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getUrl(card),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Start,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.tertiary,
             )
 
             Spacer(modifier = Modifier.width(16.dp))
@@ -73,12 +73,11 @@ fun BankContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getPhoneNumber(card),
                 fontSize = dimensionResourceSp(id = R.dimen.subtitle),
                 textAlign = TextAlign.Start,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.tertiary,
             )
         }
-
-        Spacer(modifier = Modifier.height(12.dp))
     }
 
+    Spacer(modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp, top = 8.dp))
 
 }

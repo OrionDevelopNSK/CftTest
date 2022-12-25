@@ -1,6 +1,10 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.orion.cfttest
 
 import android.Manifest
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
 import android.os.StrictMode
@@ -10,9 +14,17 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.orion.cfttest.screen.MainScreen
+import com.orion.cfttest.screen.SearchHistoryScreen
 import com.orion.cfttest.ui.theme.CftTestTheme
 import com.orion.cfttest.viewmodel.BaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +32,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel: BaseViewModel by viewModels()
+
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +44,7 @@ class MainActivity : ComponentActivity() {
         )
     }
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @RequiresApi(Build.VERSION_CODES.R)
     private val activityResultLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -45,17 +59,43 @@ class MainActivity : ComponentActivity() {
                             color = MaterialTheme.colorScheme.background,
                         ) {
                             createStrictModePolicy()
-
-                            MainScreen(viewModel = viewModel)
-
+                            AppNavHost(viewModel = viewModel)
+                            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
                         }
                     }
                 }
-            } else {
 
-                Toast.makeText(this, "В доступе отказано", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, getString(R.string.access_denied), Toast.LENGTH_SHORT).show()
             }
         }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    @Composable
+    fun AppNavHost(
+        modifier: Modifier = Modifier,
+        navController: NavHostController = rememberNavController(),
+        startDestination: String = "mainScreen",
+        viewModel: BaseViewModel
+    ) {
+        NavHost(
+            modifier = modifier,
+            navController = navController,
+            startDestination = startDestination
+        ) {
+            composable("mainScreen") {
+                MainScreen(
+                    viewModel = viewModel,
+                    onNavigateToSearchHistoryScreen = { navController.navigate("searchHistoryScreen") }
+                )
+            }
+            composable("searchHistoryScreen") {
+                SearchHistoryScreen(
+                    viewModel = viewModel
+                )
+            }
+        }
+    }
 }
 
 fun createStrictModePolicy() {

@@ -47,7 +47,7 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getLength(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.tertiary,
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -62,7 +62,7 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getType(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.tertiary,
             )
         }
 
@@ -81,7 +81,7 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getLuhn(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.tertiary,
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -96,9 +96,9 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
                 text = viewModel.getPrepared(card),
                 fontSize = dimensionResourceSp(id = R.dimen.body),
                 textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.tertiary,
             )
         }
     }
-    Divider(modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp))
+    Divider(modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp, top = 8.dp))
 }

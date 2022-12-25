@@ -16,5 +16,6 @@
     <string name="currency">ВАЛЮТА</string>
     <string name="numeric_country_code">КОД СТРАНЫ</string>
     <string name="bank">БАНК</string>
-
+    <string name="back">НАЗАД</string>
+    <string name="access_denied">В доступе отказано</string>
 </resources>

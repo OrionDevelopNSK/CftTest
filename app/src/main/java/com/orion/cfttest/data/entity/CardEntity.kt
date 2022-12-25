@@ -10,6 +10,7 @@ import androidx.room.PrimaryKey
 data class CardEntity(
     @PrimaryKey(autoGenerate = true)
     val id : Int,
+    val bin : String?,
     @Embedded
     val numberCardEntity: NumberCardEntity?,
     val scheme: String?,

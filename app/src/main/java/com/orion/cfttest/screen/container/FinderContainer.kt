@@ -16,13 +16,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.orion.cfttest.R
-import com.orion.cfttest.util.dimensionResourceSp
 import com.orion.cfttest.viewmodel.BaseViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FinderContainer(viewModel: BaseViewModel) {
-    val bin = remember { mutableStateOf("") }
+    val bin = remember { mutableStateOf(viewModel.card.value?.bin ?: "") }
+    var tmp = remember { mutableStateOf("") }
     Column(
         modifier = Modifier
             .padding(16.dp)
@@ -39,8 +39,11 @@ fun FinderContainer(viewModel: BaseViewModel) {
             maxLines = 1,
             singleLine = true,
             onValueChange = {
+                if (tmp != bin) {
+                    viewModel.createCard(it)
+                    tmp = bin
+                }
                 bin.value = it
-                viewModel.createCard(it)
             },
 
             label = {
@@ -57,18 +60,6 @@ fun FinderContainer(viewModel: BaseViewModel) {
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        Button(
-            modifier = Modifier
-                .fillMaxWidth(),
-            shape = RoundedCornerShape(15.dp),
-            onClick = {
-                viewModel.save()
 
-            }) {
-            Text(
-                stringResource(R.string.search_history),
-                fontSize = dimensionResourceSp(id = R.dimen.headline)
-            )
-        }
     }
 }

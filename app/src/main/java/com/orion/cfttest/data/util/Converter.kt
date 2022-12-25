@@ -34,6 +34,7 @@ object Converter {
             longitude = countryEntity?.longitude
         )
         return Card(
+            bin = cardEntity.bin!!,
             scheme = cardEntity.scheme,
             type = cardEntity.type,
             brand = cardEntity.brand,
@@ -69,6 +70,7 @@ object Converter {
             longitude = country?.longitude
         )
         return CardEntity(
+            bin = card.bin,
             scheme = card.scheme,
             type = card.type,
             brand = card.brand,

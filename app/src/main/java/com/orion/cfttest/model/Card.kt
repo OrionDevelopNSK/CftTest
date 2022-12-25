@@ -5,6 +5,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class Card(
+    var bin: String = "",
     @Json(name = "number")
     val numberCard: NumberCard?,
     @Json(name = "scheme")

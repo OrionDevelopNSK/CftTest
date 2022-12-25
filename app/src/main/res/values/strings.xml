@@ -16,4 +16,6 @@
     <string name="currency">CURRENCY</string>
     <string name="numeric_country_code">COUNTRY CODE</string>
     <string name="bank">BANK</string>
+    <string name="back">Back</string>
+    <string name="access_denied">Access denied</string>
 </resources>
