@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.orion.cfttest
 
 import android.Manifest
@@ -14,9 +12,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -55,16 +51,13 @@ class MainActivity : ComponentActivity() {
             if (isGranted) {
                 setContent {
                     CftTestTheme {
-                        Surface(
-                            color = MaterialTheme.colorScheme.background,
-                        ) {
+                        Surface(color =  MaterialTheme.colorScheme.onSurface) {
                             createStrictModePolicy()
                             AppNavHost(viewModel = viewModel)
                             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
                         }
                     }
                 }
-
             } else {
                 Toast.makeText(this, getString(R.string.access_denied), Toast.LENGTH_SHORT).show()
             }
@@ -90,9 +83,7 @@ class MainActivity : ComponentActivity() {
                 )
             }
             composable("searchHistoryScreen") {
-                SearchHistoryScreen(
-                    viewModel = viewModel
-                )
+                SearchHistoryScreen(viewModel = viewModel, onNavigateToMainScreen = {navController.popBackStack()})
             }
         }
     }

@@ -37,8 +37,12 @@ class BaseViewModel @Inject constructor(
 
 
     fun openMap(context: Context, card: Card?) {
-        val latitude = card?.country?.latitude
-        val longitude = card?.country?.longitude
+        if (card?.country?.latitude == null ||
+            card.country.longitude == null
+        ) return
+
+        val latitude = card.country.latitude
+        val longitude = card.country.longitude
         val intent =
             Intent(
                 Intent.ACTION_VIEW,
@@ -48,19 +52,21 @@ class BaseViewModel @Inject constructor(
     }
 
     fun openBrowser(context: Context, card: Card?) {
+        if (card?.bank?.url == null) return
         val intent =
-            Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://" + card?.bank?.url))
+            Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://" + card.bank.url))
         ContextCompat.startActivity(context, intent, null)
     }
 
     fun callPhone(context: Context, card: Card?) {
+        if (card?.bank?.phone == null) return
         val intent =
-            Intent(Intent.ACTION_CALL, Uri.parse("tel: ${card?.bank?.phone}"))
+            Intent(Intent.ACTION_CALL, Uri.parse("tel: ${card.bank.phone}"))
         ContextCompat.startActivity(context, intent, null)
     }
 
     fun getBankAndCity(card: Card?): String {
-        return card?.bank?.name ?: "?, ${card?.bank?.city ?: "?"}"
+        return (card?.bank?.name ?: "?") + ", " + (card?.bank?.city ?: "?")
     }
 
     fun getUrl(card: Card?): String {
@@ -103,8 +109,8 @@ class BaseViewModel @Inject constructor(
         }
     }
 
-    fun getLocation(card: Card?): String {
-        return "(latitude: ${card?.country?.latitude ?: "?"}, longitude: ${card?.country?.longitude ?: "?"})"
+    fun getLocation(latitude: String, longitude : String,card: Card?): String {
+        return "(${latitude}: ${card?.country?.latitude ?: "?"}, ${longitude}: ${card?.country?.longitude ?: "?"})"
     }
 
     fun getAlfa2(card: Card?): String {
@@ -137,16 +143,15 @@ class BaseViewModel @Inject constructor(
                     _card.value = tmpCard
                     val cardToCardEntity = Converter.cardToCardEntity(tmpCard)
                     saveCard(cardToCardEntity)
-                }else{
+                } else {
                     _card.value = null
                 }
-
-                Log.d("ViewModel","onResponse")
+                Log.d("ViewModel", "onResponse")
             }
 
             override fun onFailure(call: Call<Card>, t: Throwable) {
                 _card.value = null
-                Log.d("ViewModel","onFailure")
+                Log.d("ViewModel", "onFailure")
             }
         })
     }

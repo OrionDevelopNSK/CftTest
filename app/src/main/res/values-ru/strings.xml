@@ -18,4 +18,7 @@
     <string name="bank">БАНК</string>
     <string name="back">НАЗАД</string>
     <string name="access_denied">В доступе отказано</string>
+    <string name="bin_inn">БИН / ИНН</string>
+    <string name="latitude">широта</string>
+    <string name="longitude">долгота</string>
 </resources>

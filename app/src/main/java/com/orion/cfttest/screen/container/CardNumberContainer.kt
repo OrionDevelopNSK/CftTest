@@ -1,13 +1,15 @@
 package com.orion.cfttest.screen.container
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -19,14 +21,19 @@ import com.orion.cfttest.viewmodel.BaseViewModel
 @Composable
 fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
 
-    Text(
-        modifier = Modifier.padding(start = 16.dp),
-        text = stringResource(R.string.card_number),
-        fontWeight = FontWeight.Bold,
-        fontSize = dimensionResourceSp(id = R.dimen.headline),
-        textAlign = TextAlign.Center,
-        color = MaterialTheme.colorScheme.primary,
-    )
+    Box(modifier = Modifier.fillMaxWidth().background(color = MaterialTheme.colorScheme.primaryContainer)){
+        Text(
+            modifier = Modifier.padding(vertical = 4.dp, horizontal = 16.dp),
+            text = stringResource(R.string.card_number),
+            fontWeight = FontWeight.Bold,
+            fontSize = dimensionResourceSp(id = R.dimen.headline),
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onSurface,
+            fontFamily = FontFamily(Font(R.font.montserrat_alternates_extra_bold))
+        )
+    }
+
+    Spacer(modifier = Modifier.height(16.dp))
 
     Row(
         modifier = Modifier
@@ -66,7 +73,7 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
             )
         }
 
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.width(42.dp))
 
         Column(
             modifier = Modifier.weight(1f)
@@ -100,5 +107,4 @@ fun CardNumberContainer(viewModel: BaseViewModel, card: Card?) {
             )
         }
     }
-    Divider(modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp, top = 8.dp))
 }

@@ -1,14 +1,6 @@
 
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
-n
->app/src/main/java/com/orion/cfttest/util/DimensionResources.kt,3\f\3fc2f7f3d8ff1def1a998da3a193628d8980f67b
-a
-1app/src/main/java/com/orion/cfttest/model/Bank.kt,8\f\8f874edda62b745280751886132bdc93f3e4ac39
-m
-=app/src/main/java/com/orion/cfttest/data/entity/BankEntity.kt,4\0\40825d31df36fb8e692118185c5ed77fd54c1a1f
-d
-4app/src/main/java/com/orion/cfttest/model/Country.kt,6\f\6f261cef39b546f25a73e87d2233f69c07c16b59
 g
 7app/src/main/java/com/orion/cfttest/model/NumberCard.kt,3\2\32585c532e77082d4982cbb93aeca0363803ffd0
 s
@@ -21,27 +13,13 @@ X
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 A
 gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
-e
-5app/src/main/java/com/orion/cfttest/ui/theme/Color.kt,e\2\e22ddeda1b5dafa87dab271ca49ab8fcdcf385f7
-p
-@app/src/main/java/com/orion/cfttest/data/database/AppDataBase.kt,6\9\695c7ca394e7d4e7d50eeccd6387155adfb729a1
-n
->app/src/main/java/com/orion/cfttest/retrofit/CardApiService.kt,1\f\1f13602cdd141ab40f773f96739d8f2c19b3ca57
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-o
-?app/src/main/java/com/orion/cfttest/module/AppDataBaseModule.kt,8\e\8e3f819a64ff482de27876c67529cbf68d622d77
 e
 5app/src/main/java/com/orion/cfttest/ui/theme/Shape.kt,4\a\4a290aeb669fd9d3f1bdd2f7d7fdb7096ac2ad3a
-e
-5app/src/main/java/com/orion/cfttest/ui/theme/Theme.kt,2\7\27525d24784c9a7a0e55be89faebab3807081dd9
-d
-4app/src/main/java/com/orion/cfttest/ui/theme/Type.kt,1\7\17dae76808b2e4624b224944f6d6294c5fee5fa5
-p
-@app/src/main/java/com/orion/cfttest/data/entity/CountryEntity.kt,c\7\c750361e7fce91c333c19109b7dc6eb51ef1efea
-f
-6app/src/main/java/com/orion/cfttest/MainApplication.kt,d\5\d5dab3affbfc986ff55340b8339a1bb470c3cc74
+m
+=app/src/main/java/com/orion/cfttest/data/entity/CardEntity.kt,c\a\caf35918c42a7ff14d8aa31296341a88b514cfa8

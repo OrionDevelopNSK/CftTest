@@ -1,36 +1,55 @@
 package com.orion.cfttest.screen.container
 
 import android.app.Activity
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.orion.cfttest.R
 import com.orion.cfttest.model.Card
 import com.orion.cfttest.util.dimensionResourceSp
 import com.orion.cfttest.viewmodel.BaseViewModel
 
 @Composable
-fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
+fun CountryContainer(
+    viewModel: BaseViewModel,
+    card: Card?
+) {
     val context = LocalContext.current as Activity
-    Text(
-        modifier = Modifier.padding(start = 16.dp),
-        text = stringResource(R.string.country),
-        fontWeight = FontWeight.Bold,
-        fontSize = dimensionResourceSp(id = R.dimen.headline),
-        textAlign = TextAlign.Center,
-        color = MaterialTheme.colorScheme.primary,
-    )
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = MaterialTheme.colorScheme.primaryContainer)
+    ) {
+        Text(
+            modifier = Modifier.padding(vertical = 4.dp, horizontal = 16.dp),
+            text = stringResource(R.string.country),
+            fontWeight = FontWeight.Bold,
+            fontSize = dimensionResourceSp(id = R.dimen.headline),
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onSurface,
+            fontFamily = FontFamily(Font(R.font.montserrat_alternates_extra_bold))
+        )
+    }
+
+    Spacer(modifier = Modifier.height(16.dp))
 
     Row(
         modifier = Modifier
@@ -42,7 +61,7 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
 
         Text(
             text = viewModel.getEmoji(card),
-            fontSize = 12.sp,
+            fontSize = dimensionResourceSp(id = R.dimen.subtitle),
             textAlign = TextAlign.Start,
             color = MaterialTheme.colorScheme.primary,
         )
@@ -89,18 +108,32 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
                 color = MaterialTheme.colorScheme.primary,
             )
 
-            Text(
-                modifier = Modifier.clickable {
-                    viewModel.openMap(context, card)
-                },
-                text = viewModel.getLocation(card),
-                fontSize = dimensionResourceSp(id = R.dimen.body),
-                textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.tertiary,
-            )
+            Row(modifier = Modifier.clickable {
+                viewModel.openMap(context, card)
+            }
+            ) {
+                Icon(
+                    painterResource(id = R.drawable.loc),
+                    contentDescription = stringResource(R.string.search_history),
+                    modifier = Modifier.size(16.dp),
+                    tint = Color.Red
+                )
+                Text(
+
+                    text = viewModel.getLocation(
+                        stringResource(R.string.latitude),
+                        stringResource(R.string.longitude),
+                        card
+                    ),
+                    fontSize = dimensionResourceSp(id = R.dimen.body),
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.tertiary,
+                    style = TextStyle(fontStyle = FontStyle.Italic)
+                )
+            }
         }
 
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.width(49.dp))
 
         Column(
             modifier = Modifier.weight(1f)
@@ -134,6 +167,4 @@ fun CountryContainer(viewModel: BaseViewModel, card: Card?) {
             )
         }
     }
-
-    Divider(modifier = Modifier.padding(bottom = 4.dp, start = 16.dp, end = 16.dp, top = 8.dp))
 }
